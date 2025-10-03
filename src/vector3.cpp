@@ -101,7 +101,7 @@ Vector3 operator*(real scalar, const Vector3& vector3) {
 
 // Commuted scalar multiplication: scalar * tensor (friend function)
 Vector3 operator/(real scalar, const Vector3& vector3) {
-    return vector3 / scalar;  // Delegate to the member function
+    return scalar / vector3;  // Delegate to the member function
 }
 
 real Vector3::dot(const Vector3& other) const {

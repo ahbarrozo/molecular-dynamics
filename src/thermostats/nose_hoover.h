@@ -2,7 +2,7 @@
 #include "config.h"
 #include "thermostat.h"
 
-class NoseHoover : public Thermostat {
+class NoseHooverThermostat : public Thermostat {
 private:
     real tau_;
     real Q_;
@@ -17,10 +17,10 @@ private:
     
 public:
     // Simple Nosé-Hoover
-    NoseHoover(real temp, real tau);
+    NoseHooverThermostat(real temp, real tau);
     
     // Nosé-Hoover chains (better ergodicity)
-    NoseHoover(real temp, real tau, int chain_length);
+    NoseHooverThermostat(real temp, real tau, int chain_length);
     
     void apply(MDSystem& system) override;
     std::string name() const override { return "Nosè-Hoover"; }

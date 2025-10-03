@@ -1,4 +1,5 @@
 add_library(md_lib
+    config.h
     vector3.cpp
     vector3.h
     
@@ -22,6 +23,7 @@ add_library(md_lib
     potentials/dihedral/ryckaert_bellemans.h
     potentials/nonbonded/buckingham.h
     potentials/nonbonded/coulomb.h
+    potentials/nonbonded/lennard_jones.cpp
     potentials/nonbonded/lennard_jones.h
     potentials/nonbonded/soft_core.h
     potentials/restraints/distance_restraint.h
@@ -76,5 +78,9 @@ endif()
 # Optional: Add a test executable if you have tests
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/test_vector3.cpp)
     add_executable(test_vector3 test_vector3.cpp)
+    target_link_libraries(test_vector3 PRIVATE md_lib)
+endif()
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/test_noblegas1.cpp)
+    add_executable(test_noblegas1 test_noblegas1.cpp)
     target_link_libraries(test_vector3 PRIVATE md_lib)
 endif()

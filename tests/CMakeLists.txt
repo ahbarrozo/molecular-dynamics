@@ -1,5 +1,5 @@
-# Create test executable
 add_executable(test_vector3 test_vector3.cpp)
+add_executable(test_noblegas1 test_noblegas1.cpp)
 
-# Link with your tensor library (automatically gets OpenBLAS too)
 target_link_libraries(test_vector3 PRIVATE md_lib)
+target_link_libraries(test_noblegas1 PRIVATE md_lib)

@@ -7,7 +7,7 @@ private:
     bool first_step_ = true;  // Flag to handle first step differently
     
 public:
-    void reset() override { first_step_ = true; }
+    void reset() { first_step_ = true; }
     void step(MDSystem& system) override;
     std::vector<Vector3> get_synchronized_velocities(const MDSystem& system) const;
     std::string name() const override { return "Leapfrog"; }

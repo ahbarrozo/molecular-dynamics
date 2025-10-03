@@ -13,7 +13,7 @@ LennardJonesPotential::LennardJonesPotential(real epsilon, real sigma, real cuto
     energy_cutoff_ = static_cast<real>(4.0) * epsilon_ * (sigma6_rc6 * sigma6_rc6 - sigma6_rc6);
 }
 
-void LennardJonesPotential::calculate(const Vector3& dr, real r2, 
+void LennardJonesPotential::calculate(real r2, 
     real& force_mag, real& energy) const {
 
         if (r2 > cutoff2_) {
@@ -32,8 +32,7 @@ void LennardJonesPotential::calculate(const Vector3& dr, real r2,
                    (static_cast<real>(2.0) * sigma12_r12 - sigma6_r6);
         
         // Shifted potential energy
-        energy = static_cast<real>(4.0) * epsilon_ * (sigma12_r12 - sigma6_r6) - energy_shift_;
+        energy = static_cast<real>(4.0) * epsilon_ * (sigma12_r12 - sigma6_r6) - energy_cutoff_;
     }
     
-    real cutoff() const { return cutoff_; }
-};
+real LennardJonesPotential::cutoff() const { return cutoff_; }

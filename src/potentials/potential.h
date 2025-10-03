@@ -15,11 +15,10 @@ enum class PotentialType {
 class Potential {
     public:
         virtual ~Potential() = default;     
-        virtual void calculate(const Vector3& r_ij,
-                            float r_mag,           // Distance magnitude
-                            Vector3& force_i,
-                            Vector3& force_j,
-                            float& energy) const = 0;
+        virtual void calculate(
+                            real r2,           // Distance magnitude
+                            real& force_mag,
+                            real& energy) const = 0;
         
         virtual real cutoff() const = 0;
         virtual std::string name() const = 0;

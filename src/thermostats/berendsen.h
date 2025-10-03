@@ -6,11 +6,11 @@
 #include "md_system.h"
 #include "thermostats/thermostat.h"
 
-class Berendsen : public Thermostat {
+class BerendsenThermostat : public Thermostat {
     private:
         real tau_;  // Coupling time constant
     public:
-        Berendsen(real temp, real tau);
+        BerendsenThermostat(real temp, real tau);
         void apply(MDSystem& system) override;
         std::string name() const override { return "Berendsen"; }
 };

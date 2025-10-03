@@ -11,7 +11,8 @@ class LennardJonesPotential : public Potential {
 
     public: 
         LennardJonesPotential(real epsilon, real sigma, real cutoff);
+        void calculate(real r2, real& force_mag, real& energy) const override;
         real cutoff() const override;
         std::string name() const override { return "Lennard-Jones"; }
-
+        PotentialType type() const override { return PotentialType::NON_BONDED; }
 };

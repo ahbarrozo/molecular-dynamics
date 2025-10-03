@@ -7,7 +7,7 @@ void VelocityVerlet::step(MDSystem& system) {
     auto& positions = system.positions_;
     auto& velocities = system.velocities_;
     auto& forces = system.forces_;
-    const auto& masses = system.masses_;
+    const auto& masses = system.masses();
     
     // Store old forces (needed for velocity update)
     std::vector<Vector3> old_forces = system.forces_;

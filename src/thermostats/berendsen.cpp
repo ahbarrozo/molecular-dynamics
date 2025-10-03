@@ -2,7 +2,7 @@
 
 #include "thermostats/berendsen.h"
 
-Berendsen::Berendsen(real temp, real tau)
+BerendsenThermostat::BerendsenThermostat(real temp, real tau)
     : Thermostat(temp),
       tau_(tau) {
         if (tau <= 0) {
@@ -10,7 +10,7 @@ Berendsen::Berendsen(real temp, real tau)
         }
 }
 
-void Berendsen::apply(MDSystem& system) {
+void BerendsenThermostat::apply(MDSystem& system) {
     real current_temp = system.temperature();
     
     // Avoid division by zero

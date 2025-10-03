@@ -2,7 +2,7 @@
 #include <cmath>
 
 // Simple Nosé-Hoover
-NoseHoover::NoseHoover(real temp, real tau)
+NoseHooverThermostat::NoseHooverThermostat(real temp, real tau)
     : Thermostat(temp), 
       tau_(tau),
       xi_(0.0),
@@ -16,7 +16,7 @@ NoseHoover::NoseHoover(real temp, real tau)
 }
 
 // Nosé-Hoover chains
-NoseHoover::NoseHoover(real temp, real tau, int chain_length)
+NoseHooverThermostat::NoseHooverThermostat(real temp, real tau, int chain_length)
     : Thermostat(temp),
       tau_(tau),
       xi_(0.0),
@@ -35,7 +35,7 @@ NoseHoover::NoseHoover(real temp, real tau, int chain_length)
     xi_dot_chain_.resize(chain_length, 0.0);
 }
 
-void NoseHoover::apply(MDSystem& system) {
+void NoseHooverThermostat::apply(MDSystem& system) {
     const real dt = system.time_step();
     const real half_dt = static_cast<real>(0.5) * dt;
     const size_t n_particles = system.n_particles();
